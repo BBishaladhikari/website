@@ -15,6 +15,25 @@ header {
   background-color: rgba(0,0,0,0.5);
   color: white;
 }
+.social-media {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.social-media li {
+  margin-right: 20px;
+}
+
+.social-media a {
+  display: inline-block;
+  color: white;
+  font-size: 24px;
+}
+
+.social-media a i {
+  font-size: 1.5em;
+}
 nav ul {
   display: flex;
   flex-direction: column;
