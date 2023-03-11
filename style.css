@@ -15,24 +15,18 @@ header {
   background-color: rgba(0,0,0,0.5);
   color: white;
 }
-.social-media {
-  display: flex;
-  list-style: none;
-  padding: 0;
-}
-
-.social-media li {
-  margin-right: 20px;
-}
-
-.social-media a {
-  display: inline-block;
+.social-icon li a{
+  text-decoration: none;
   color: white;
-  font-size: 24px;
+  border-radius: 5px;
+  transition: all .5s ease;
 }
-
-.social-media a i {
-  font-size: 1.5em;
+.social-icon li a:hover{
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 0 0 15px white;
+  color: black;
+  font-weight: bold
 }
 nav ul {
   display: flex;
