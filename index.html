@@ -495,8 +495,48 @@
       <button type="submit" class="btn">Submit</button>
     </form>
   </div>
-  <div>
+  <div class="container">
 	<h2>OTP Verification</h2>
+
+  <?php
+  // Generate a random OTP code
+  $otp = mt_rand(100000, 999999);
+
+  // Store the OTP code in a session variable
+  session_start();
+  $_SESSION['otp'] = $otp;
+
+  // Send the OTP code to the user via email or SMS
+  $to = 'user@example.com';
+  $subject = 'Your OTP code';
+  $message = 'Your OTP code is: ' . $otp;
+  $headers = 'From: admin@example.com' . "\r\n" .
+             'Reply-To: admin@example.com' . "\r\n" .
+             'X-Mailer: PHP/' . phpversion();
+  mail($to, $subject, $message, $headers);
+
+  // Verify the OTP code entered by the user
+  $error = '';
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_POST['otp'] == $_SESSION['otp']) {
+      // OTP code is valid
+      // Do something here, such as logging in the user
+      echo '<p>OTP code is valid</p>';
+    } else {
+      // OTP code is invalid
+      $error = 'OTP code is invalid';
+    }
+  }
+  ?>
+  <form method="post">
+    <label for="otp">Enter OTP code:</label>
+    <input type="text" name="otp" id="otp">
+    <input type="submit" value="Verify">
+    <?php if ($error) { ?>
+      <div class="error"><?php echo $error; ?></div>
+    <?php } ?>
+
+
   </div>
 </section>
 <title>OTP Verification</title>
