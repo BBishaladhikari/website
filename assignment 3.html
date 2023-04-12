@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>World Cup Form</title>
+    <style>
+      /* CSS styles */
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input[type="text"], input[type="number"] {
+        margin-left: 10px;
+      }
+      input[type="submit"], button {
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+      fieldset {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      legend {
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HTML form -->
+    <h1>World Cup Form</h1>
+    <form>
+      <fieldset>
+        <legend>Organizer</legend>
+        <label for="fifa-related-values">FIFA Related Values:</label>
+        <input type="text" id="fifa-related-values" name="fifa-related-values">
+      </fieldset>
+      <fieldset>
+        <legend>Host</legend>
+        <label for="host-country">Host Country:</label>
+        <input type="text" id="host-country" name="host-country">
+      </fieldset>
+      <fieldset id="participating-teams">
+        <legend>Participating Teams</legend>
+        <button type="button" onclick="addCountry(event)">Add Country</button>
+        <div id="country-template" style="display:none;">
+          <fieldset>
+            <legend>Country</legend>
+            <label for="country-name">Name:</label>
+            <input type="text" id="country-name" name="country-name"><br>
+            <label for="country-timezone">Timezone:</label>
+            <input type="text" id="country-timezone" name="country-timezone"><br>
+            <label for="country-population">Population:</label>
+            <input type="number" id="country-population" name="country-population"><br>
+            <label for="country-ethnic-groups">Ethnic Groups:</label>
+            <input type="text" id="country-ethnic-groups" name="country-ethnic-groups"><br>
+            <label for="country-mothertongue">Mother Tongue:</label>
+            <input type="text" id="country-mothertongue" name="country-mothertongue">
+            <button type="button" onclick="addPlayer(event)">Add Player</button>
+            <div id="player-template" style="display:none;">
+              <fieldset>
+                <legend>Player</legend>
+                <label for="player-name">Name:</label>
+                <input type="text" id="player-name" name="player-name"><br>
+                <label for="player-role">Player Role:</label>
+                <input type="text" id="player-role" name="player-role"><br>
+                <label for="jersey-number">Jersey Number:</label>
+                <input type="number" id="jersey-number" name="jersey-number"><br>
+                <label for="origin">Origin:</label>
+                <input type="text" id="origin" name="origin">
+              </fieldset>
+            </div>
+          </fieldset>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Venue</legend>
+        <label for="venue-address">Address:</label>
+        <input type="text" id="venue-address" name="venue-address"><br>
+        <label for="venue-capacity">Capacity:</label>
+        <input type="number" id="venue-capacity" name="venue-capacity"><br>
+        <label for="hotels-nearby">Hotels Nearby:</label>
+        <input type="text" id="hotels-nearby" name="hotels-nearby">
+        </fieldset>
+        <fieldset>
+        <legend>Other Information</legend>
+        <label for="world-cup-history">World Cup History:</label>
+        <input type="text" id="world-cup-history" name="world-cup-history"><br>
+        <label for="media-partners">Media Partners:</label>
+        <input type="text" id="media-partners" name="media-partners"><br>
+        <label for="total-viewers">Total Viewers:</label>
+        <input type="number" id="total-viewers" name="total-viewers">
+        </fieldset>
+        <input type="submit" value="Submit">
+        </form>
+        <!-- JavaScript code -->
+<script>
+  const countryTemplate = document.querySelector('#country-template');
+  const playerTemplate = document.querySelector('#player-template');
+  const participatingTeams = document.querySelector('#participating-teams');
+  
+  function addCountry(event) {
+    event.preventDefault();
+    
+    const clone = countryTemplate.cloneNode(true);
+    clone.removeAttribute('id');
+    clone.style.display = 'block';
+    participatingTeams.insertBefore(clone, event.target);
+  }
+  
+  function addPlayer(event) {
+    event.preventDefault();
+    
+    const clone = playerTemplate.cloneNode(true);
+    clone.removeAttribute('id');
+    clone.style.display = 'block';
+    event.target.parentNode.insertBefore(clone, event.target);
+  }
+</script>
+</body>
+</html>

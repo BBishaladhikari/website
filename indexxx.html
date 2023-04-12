@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Displaying Table HTML File with AJAX</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$.ajax({
+				url: "Table.html",
+				cache: false,
+				success: function(html){
+					$("#table-container").html(html);
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="table-container"></div>
+</body>
+</html>
